@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Цифровий щит</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="На головну">
+      <span class="brand-mark">CS</span>
+      <span>Цифровий щит</span>
+    </a>
+
+    <nav class="nav" aria-label="Основна навігація">
+      <a href="#rules">Правила</a>
+      <a href="#threats">Загрози</a>
+      <a href="#quiz">Тест</a>
+      <a href="#checklist">Чекліст</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">Навчальний проект з інформатики</p>
+        <h1>Цифровий щит</h1>
+        <p class="hero-text">
+          Короткий сайт про основи кібербезпеки: як захищати паролі, розпізнавати
+          шахрайство та безпечніше користуватися інтернетом щодня.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#rules">Почати</a>
+          <a class="button secondary" href="#quiz">Перевірити знання</a>
+        </div>
+      </div>
+
+      <div class="security-visual" aria-label="Схема захисту даних">
+        <div class="shield">
+          <span class="lock-hole"></span>
+        </div>
+        <span class="node node-one"></span>
+        <span class="node node-two"></span>
+        <span class="node node-three"></span>
+        <span class="node node-four"></span>
+        <span class="line line-one"></span>
+        <span class="line line-two"></span>
+        <span class="line line-three"></span>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div>
+        <h2>Чому це важливо</h2>
+        <p>
+          Більшість проблем в інтернеті починається не зі складного злому, а з простих
+          помилок: слабкого пароля, переходу за підозрілим посиланням або публікації
+          особистих даних у відкритому доступі.
+        </p>
+      </div>
+      <div class="stat-strip">
+        <article>
+          <strong>1</strong>
+          <span>надійний пароль може захистити кілька важливих акаунтів</span>
+        </article>
+        <article>
+          <strong>2FA</strong>
+          <span>додає другий рівень перевірки під час входу</span>
+        </article>
+        <article>
+          <strong>0</strong>
+          <span>підозрілих файлів краще відкривати без перевірки</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="rules">
+      <div class="section-heading">
+        <p class="eyebrow">База безпеки</p>
+        <h2>5 правил цифрової гігієни</h2>
+      </div>
+
+      <div class="rule-grid">
+        <article class="rule-card">
+          <span class="card-number">01</span>
+          <h3>Створюй сильні паролі</h3>
+          <p>Використовуй довгі паролі з літерами, цифрами та символами. Не став один пароль на всі сайти.</p>
+        </article>
+        <article class="rule-card">
+          <span class="card-number">02</span>
+          <h3>Увімкни двофакторний вхід</h3>
+          <p>Код з телефону або застосунку ускладнює доступ до акаунта навіть тоді, коли пароль дізналися.</p>
+        </article>
+        <article class="rule-card">
+          <span class="card-number">03</span>
+          <h3>Перевіряй посилання</h3>
+          <p>Перед переходом подивись на адресу сайту. Шахраї часто роблять сторінки, схожі на справжні.</p>
+        </article>
+        <article class="rule-card">
+          <span class="card-number">04</span>
+          <h3>Оновлюй програми</h3>
+          <p>Оновлення виправляють помилки безпеки, тому їх не варто відкладати на місяці.</p>
+        </article>
+        <article class="rule-card">
+          <span class="card-number">05</span>
+          <h3>Не публікуй зайве</h3>
+          <p>Адреса, номер телефону, документи та приватні фото не мають бути доступні всім.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section threat-band" id="threats">
+      <div class="section-heading">
+        <p class="eyebrow">Типові небезпеки</p>
+        <h2>Як виглядають онлайн-загрози</h2>
+      </div>
+
+      <div class="threat-layout">
+        <div class="threat-list">
+          <button class="threat-button active" data-threat="phishing">Фішинг</button>
+          <button class="threat-button" data-threat="malware">Шкідливі файли</button>
+          <button class="threat-button" data-threat="oversharing">Зайві дані</button>
+        </div>
+
+        <article class="threat-panel" aria-live="polite">
+          <h3 id="threat-title">Фішинг</h3>
+          <p id="threat-text">
+            Це повідомлення або сайт, який підробляє відому компанію та просить ввести пароль,
+            дані банківської картки або код підтвердження.
+          </p>
+          <p class="tip" id="threat-tip">Порада: перевір адресу сайту та не вводь пароль після переходу з підозрілого листа.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="quiz">
+      <div class="section-heading">
+        <p class="eyebrow">Міні-тест</p>
+        <h2>Перевір себе</h2>
+      </div>
+
+      <div class="quiz-box">
+        <p class="question" id="question">Який пароль найнадійніший?</p>
+        <div class="answers" id="answers"></div>
+        <div class="quiz-result" id="quiz-result">Обери відповідь, щоб побачити результат.</div>
+        <button class="button primary" id="next-question" type="button">Наступне питання</button>
+      </div>
+    </section>
+
+    <section class="section checklist-section" id="checklist">
+      <div class="section-heading">
+        <p class="eyebrow">Практична частина</p>
+        <h2>Особистий чекліст безпеки</h2>
+      </div>
+
+      <div class="checklist">
+        <label><input type="checkbox"> У мене різні паролі для важливих сайтів</label>
+        <label><input type="checkbox"> На пошті увімкнено двофакторну перевірку</label>
+        <label><input type="checkbox"> Я перевіряю адресу сайту перед входом</label>
+        <label><input type="checkbox"> На пристрої встановлені оновлення</label>
+        <label><input type="checkbox"> Я не відкриваю невідомі файли без перевірки</label>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span>Готовність</span>
+          <strong id="progress-text">0%</strong>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Проект підготував Козлов Тимур</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
