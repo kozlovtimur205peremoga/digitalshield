@@ -1,0 +1,123 @@
+﻿const threats = {
+  phishing: {
+    title: "Фішинг",
+    text: "Це повідомлення або сайт, який підробляє відому компанію та просить ввести пароль, дані банківської картки або код підтвердження.",
+    tip: "Порада: перевір адресу сайту та не вводь пароль після переходу з підозрілого листа."
+  },
+  malware: {
+    title: "Шкідливі файли",
+    text: "Небезпечна програма може потрапити на пристрій через піратські файли, дивні архіви або вкладення від невідомих людей.",
+    tip: "Порада: завантажуй програми з офіційних сайтів і перевіряй файли перед запуском."
+  },
+  oversharing: {
+    title: "Зайві особисті дані",
+    text: "Фото документів, адреса, номер телефону або геолокація можуть допомогти шахраям дізнатися про людину забагато.",
+    tip: "Порада: перед публікацією подумай, чи не може ця інформація нашкодити тобі або близьким."
+  }
+};
+
+const questions = [
+  {
+    question: "Який пароль найнадійніший?",
+    answers: ["qwerty123", "Ivan2009", "Misto!Rika_47-Den"],
+    correct: 2
+  },
+  {
+    question: "Що треба зробити з підозрілим посиланням у повідомленні?",
+    answers: ["Одразу перейти", "Перевірити адресу та відправника", "Надіслати всім друзям"],
+    correct: 1
+  },
+  {
+    question: "Навіщо потрібна двофакторна перевірка?",
+    answers: ["Щоб додати другий рівень захисту", "Щоб пришвидшити інтернет", "Щоб вимкнути оновлення"],
+    correct: 0
+  }
+];
+
+let currentQuestion = 0;
+let answered = false;
+
+const threatButtons = document.querySelectorAll(".threat-button");
+const threatTitle = document.querySelector("#threat-title");
+const threatText = document.querySelector("#threat-text");
+const threatTip = document.querySelector("#threat-tip");
+
+threatButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const threat = threats[button.dataset.threat];
+
+    threatButtons.forEach((item) => item.classList.remove("active"));
+    button.classList.add("active");
+    threatTitle.textContent = threat.title;
+    threatText.textContent = threat.text;
+    threatTip.textContent = threat.tip;
+  });
+});
+
+const questionElement = document.querySelector("#question");
+const answersElement = document.querySelector("#answers");
+const resultElement = document.querySelector("#quiz-result");
+const nextButton = document.querySelector("#next-question");
+
+function renderQuestion() {
+  const item = questions[currentQuestion];
+
+  answered = false;
+  questionElement.textContent = item.question;
+  resultElement.textContent = "Обери відповідь, щоб побачити результат.";
+  answersElement.innerHTML = "";
+
+  item.answers.forEach((answer, index) => {
+    const button = document.createElement("button");
+    button.className = "answer-button";
+    button.type = "button";
+    button.textContent = answer;
+
+    button.addEventListener("click", () => checkAnswer(button, index));
+    answersElement.append(button);
+  });
+}
+
+function checkAnswer(button, index) {
+  if (answered) {
+    return;
+  }
+
+  const item = questions[currentQuestion];
+  const buttons = answersElement.querySelectorAll(".answer-button");
+
+  answered = true;
+
+  if (index === item.correct) {
+    button.classList.add("correct");
+    resultElement.textContent = "Правильно. Це безпечний вибір.";
+  } else {
+    button.classList.add("wrong");
+    buttons[item.correct].classList.add("correct");
+    resultElement.textContent = "Не зовсім. Зверни увагу на правильну відповідь.";
+  }
+}
+
+nextButton.addEventListener("click", () => {
+  currentQuestion = (currentQuestion + 1) % questions.length;
+  renderQuestion();
+});
+
+const checklistItems = document.querySelectorAll(".checklist input");
+const progressFill = document.querySelector("#progress-fill");
+const progressText = document.querySelector("#progress-text");
+
+function updateProgress() {
+  const checked = [...checklistItems].filter((item) => item.checked).length;
+  const progress = Math.round((checked / checklistItems.length) * 100);
+
+  progressFill.style.width = `${progress}%`;
+  progressText.textContent = `${progress}%`;
+}
+
+checklistItems.forEach((item) => {
+  item.addEventListener("change", updateProgress);
+});
+
+renderQuestion();
+updateProgress();
